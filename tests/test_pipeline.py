@@ -55,3 +55,20 @@ def test_organization_heading_with_viaf_and_alternate_name():
     assert (item, None, SDO.Organization) in g
     assert (item, SDO.sameAs, URIRef("http://viaf.org/viaf/123456")) in g
     assert (item, SDO.alternateName, None) in g
+
+
+def test_035_with_trailing_garbage_recovers_clean_id_instead_of_crashing():
+    """Regression test: real record 2033927 has $a = '(VIAF)47048537 (' (a
+    truncated source value with a trailing space and stray unmatched '(').
+    This crashed a ~9-hour full harvest by minting an unserializable IRI --
+    rdflib's N-Triples writer raises on an invalid URI rather than skipping
+    it. Must recover the clean id, not raise and not silently mint garbage."""
+    record = _record("2033927", [
+        {"@tag": "100", "marc:subfield": {"@code": "a", "$text": "Test Person"}},
+        {"@tag": "035", "marc:subfield": {"@code": "a", "$text": "(VIAF)47048537 ("}},
+    ])
+    g = Graph()
+    item = process_record(record, g)
+    assert (item, SDO.sameAs, URIRef("http://viaf.org/viaf/47048537")) in g
+    # must actually be serializable -- the original failure was at serialize time
+    g.serialize(format="nt")

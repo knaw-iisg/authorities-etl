@@ -49,7 +49,7 @@ def process_record(record: dict, g: Graph) -> URIRef | None:
     for datafield in datafields:
         tag = datafield.get("@tag")
         if tag == "035":
-            apply_035(g, subject, datafield)
+            apply_035(g, subject, datafield, record_id=control_number)
         elif tag in ALTERNATE_NAME_TAGS:
             for sub in as_array(datafield.get("marc:subfield")):
                 if get_code(sub) != "a":
