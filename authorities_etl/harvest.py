@@ -5,6 +5,7 @@ fixtures (so this module and those fixtures are interchangeable inputs to
 
 from __future__ import annotations
 
+import time
 from collections.abc import Iterator
 
 import requests
@@ -19,6 +20,9 @@ _NAMESPACES = {
     "http://www.loc.gov/MARC21/slim": "marc",
 }
 
+_MAX_RETRIES = 5
+_RETRY_BACKOFF_SECONDS = 3
+
 
 def _parse(xml_bytes: bytes) -> dict:
     return xmltodict.parse(
@@ -30,6 +34,23 @@ def _parse(xml_bytes: bytes) -> dict:
     )
 
 
+def _get_with_retry(http: requests.Session, endpoint: str, params: dict, timeout: float) -> requests.Response:
+    """A full harvest makes thousands of requests over tens of minutes;
+    transient connection drops are expected, not exceptional (observed
+    directly against this same endpoint during development)."""
+    last_error: Exception | None = None
+    for attempt in range(_MAX_RETRIES):
+        try:
+            resp = http.get(endpoint, params=params, timeout=timeout)
+            resp.raise_for_status()
+            return resp
+        except requests.exceptions.RequestException as exc:
+            last_error = exc
+            if attempt < _MAX_RETRIES - 1:
+                time.sleep(_RETRY_BACKOFF_SECONDS * (attempt + 1))
+    raise last_error
+
+
 def harvest_records(
     *,
     endpoint: str = ENDPOINT,
@@ -38,29 +59,33 @@ def harvest_records(
     identifier: str | None = None,
     session: requests.Session | None = None,
     timeout: float = 60,
+    resume_token: str | None = None,
+    on_page: callable = None,
 ) -> Iterator[dict]:
+    """``resume_token`` restarts a previously interrupted ``ListRecords``
+    harvest from that resumption token. ``on_page(resumption_token)`` is
+    called after each page if given, so a caller can persist a checkpoint.
+    """
     http = session or requests.Session()
 
     if identifier is not None:
         params = {"verb": "GetRecord", "identifier": identifier, "metadataPrefix": metadata_prefix}
-        resp = http.get(endpoint, params=params, timeout=timeout)
-        resp.raise_for_status()
+        resp = _get_with_retry(http, endpoint, params, timeout)
         doc = _parse(resp.content)
         record = doc.get("OAI-PMH", {}).get("GetRecord", {}).get("record")
         if record:
             yield _to_source_shape(record)
         return
 
-    params = {"verb": "ListRecords", "metadataPrefix": metadata_prefix}
+    initial_params = {"verb": "ListRecords", "metadataPrefix": metadata_prefix}
     if set_spec:
-        params["set"] = set_spec
+        initial_params["set"] = set_spec
 
-    resumption_token = None
+    resumption_token = resume_token
     while True:
-        request_params = {"verb": "ListRecords", "resumptionToken": resumption_token} if resumption_token else params
+        request_params = {"verb": "ListRecords", "resumptionToken": resumption_token} if resumption_token else initial_params
 
-        resp = http.get(endpoint, params=request_params, timeout=timeout)
-        resp.raise_for_status()
+        resp = _get_with_retry(http, endpoint, request_params, timeout)
         doc = _parse(resp.content)
         list_records = doc.get("OAI-PMH", {}).get("ListRecords", {})
         if not list_records:
@@ -74,6 +99,8 @@ def harvest_records(
 
         token = list_records.get("resumptionToken")
         token_text = token.get("$text") if isinstance(token, dict) else token
+        if on_page is not None:
+            on_page(token_text)
         if not token_text:
             return
         resumption_token = token_text
