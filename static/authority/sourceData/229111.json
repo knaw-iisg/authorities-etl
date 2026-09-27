@@ -1,0 +1,89 @@
+{
+  "header": {
+    "identifier": "oai:socialhistoryservices.org:iish.evergreen.authority:229111",
+    "datestamp": "2020-05-12T08:48:58Z",
+    "setSpec": [
+      "iish",
+      "iish.evergreen",
+      "iish.evergreen.authority"
+    ]
+  },
+  "metadata": {
+    "marc:record": {
+      "@http://www.w3.org/2001/XMLSchema-instance:schemaLocation": "http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd",
+      "@xmlns": {
+        "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+        "marc": "http://www.loc.gov/MARC21/slim"
+      },
+      "marc:leader": "00208nz  a2200097o  45 0",
+      "marc:controlfield": [
+        {
+          "@tag": "001",
+          "$text": "229111"
+        },
+        {
+          "@tag": "003",
+          "$text": "NL-AMISG"
+        },
+        {
+          "@tag": "005",
+          "$text": "20200512064858.0"
+        },
+        {
+          "@tag": "008",
+          "$text": "021205n| acannaabn |n anc d"
+        }
+      ],
+      "marc:datafield": [
+        {
+          "@tag": "035",
+          "@ind1": " ",
+          "@ind2": " ",
+          "marc:subfield": {
+            "@code": "a",
+            "$text": "(IISG)IISGa10732367"
+          }
+        },
+        {
+          "@ind1": " ",
+          "@tag": "040",
+          "@ind2": " ",
+          "marc:subfield": [
+            {
+              "@code": "a",
+              "$text": "IISG"
+            },
+            {
+              "@code": "c",
+              "$text": "IISG"
+            }
+          ]
+        },
+        {
+          "@ind2": "4",
+          "@tag": "151",
+          "@ind1": " ",
+          "marc:subfield": {
+            "@code": "a",
+            "$text": "Nijmegen (Netherlands)"
+          }
+        },
+        {
+          "@ind1": " ",
+          "@tag": "901",
+          "@ind2": " ",
+          "marc:subfield": [
+            {
+              "@code": "c",
+              "$text": "229111"
+            },
+            {
+              "@code": "t",
+              "$text": "authority"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

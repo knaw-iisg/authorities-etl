@@ -1,0 +1,98 @@
+{
+  "header": {
+    "identifier": "oai:socialhistoryservices.org:iish.evergreen.authority:545896",
+    "datestamp": "2020-06-10T14:55:35Z",
+    "setSpec": [
+      "iish",
+      "iish.evergreen",
+      "iish.evergreen.authority"
+    ]
+  },
+  "metadata": {
+    "marc:record": {
+      "@http://www.w3.org/2001/XMLSchema-instance:schemaLocation": "http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd",
+      "@xmlns": {
+        "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+        "marc": "http://www.loc.gov/MARC21/slim"
+      },
+      "marc:leader": "00209nz  a2200097o  45 0",
+      "marc:controlfield": [
+        {
+          "@tag": "001",
+          "$text": "545896"
+        },
+        {
+          "@tag": "003",
+          "$text": "NL-AMISG"
+        },
+        {
+          "@tag": "005",
+          "$text": "20200610125535.0"
+        },
+        {
+          "@tag": "008",
+          "$text": "080908n| aaannaabn |n aac d"
+        }
+      ],
+      "marc:datafield": [
+        {
+          "@ind2": " ",
+          "@tag": "035",
+          "@ind1": " ",
+          "marc:subfield": {
+            "@code": "a",
+            "$text": "(IISG)IISGa11831931"
+          }
+        },
+        {
+          "@ind1": " ",
+          "@ind2": " ",
+          "@tag": "040",
+          "marc:subfield": [
+            {
+              "@code": "a",
+              "$text": "IISG"
+            },
+            {
+              "@code": "c",
+              "$text": "IISG"
+            }
+          ]
+        },
+        {
+          "@ind2": " ",
+          "@tag": "100",
+          "@ind1": "1",
+          "marc:subfield": {
+            "@code": "a",
+            "$text": "Anis, Muhammad"
+          }
+        },
+        {
+          "@ind2": " ",
+          "@tag": "400",
+          "@ind1": "1",
+          "marc:subfield": {
+            "@code": "a",
+            "$text": "أنيس, محمد"
+          }
+        },
+        {
+          "@ind2": " ",
+          "@tag": "901",
+          "@ind1": " ",
+          "marc:subfield": [
+            {
+              "@code": "c",
+              "$text": "545896"
+            },
+            {
+              "@code": "t",
+              "$text": "authority"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

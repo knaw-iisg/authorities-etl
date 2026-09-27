@@ -1,0 +1,89 @@
+{
+  "header": {
+    "identifier": "oai:socialhistoryservices.org:iish.evergreen.authority:187",
+    "datestamp": "2011-08-02T15:49:10Z",
+    "setSpec": [
+      "iish",
+      "iish.evergreen",
+      "iish.evergreen.authority"
+    ]
+  },
+  "metadata": {
+    "marc:record": {
+      "@http://www.w3.org/2001/XMLSchema-instance:schemaLocation": "http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd",
+      "@xmlns": {
+        "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+        "marc": "http://www.loc.gov/MARC21/slim"
+      },
+      "marc:leader": "00213nz  a2200097o  45 0",
+      "marc:controlfield": [
+        {
+          "@tag": "001",
+          "$text": "187"
+        },
+        {
+          "@tag": "003",
+          "$text": "NL-AMISG"
+        },
+        {
+          "@tag": "005",
+          "$text": "20021205191805.0"
+        },
+        {
+          "@tag": "008",
+          "$text": "130909n| acnaaabn |n anc d|||||||||||||d"
+        }
+      ],
+      "marc:datafield": [
+        {
+          "@ind1": " ",
+          "@tag": "035",
+          "@ind2": " ",
+          "marc:subfield": {
+            "@code": "a",
+            "$text": "(IISG)IISGa10001283"
+          }
+        },
+        {
+          "@ind2": " ",
+          "@tag": "040",
+          "@ind1": " ",
+          "marc:subfield": [
+            {
+              "@code": "a",
+              "$text": "IISG"
+            },
+            {
+              "@code": "c",
+              "$text": "IISG"
+            }
+          ]
+        },
+        {
+          "@tag": "110",
+          "@ind2": " ",
+          "@ind1": "2",
+          "marc:subfield": {
+            "@code": "a",
+            "$text": "1 mei comité 1970"
+          }
+        },
+        {
+          "@ind1": " ",
+          "@tag": "901",
+          "@ind2": " ",
+          "marc:subfield": [
+            {
+              "@code": "c",
+              "$text": "187"
+            },
+            {
+              "@code": "t",
+              "$text": "authority"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

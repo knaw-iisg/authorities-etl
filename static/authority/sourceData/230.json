@@ -1,0 +1,98 @@
+{
+  "header": {
+    "identifier": "oai:socialhistoryservices.org:iish.evergreen.authority:230",
+    "datestamp": "2011-08-02T15:49:10Z",
+    "setSpec": [
+      "iish",
+      "iish.evergreen",
+      "iish.evergreen.authority"
+    ]
+  },
+  "metadata": {
+    "marc:record": {
+      "@http://www.w3.org/2001/XMLSchema-instance:schemaLocation": "http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd",
+      "@xmlns": {
+        "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+        "marc": "http://www.loc.gov/MARC21/slim"
+      },
+      "marc:leader": "00263nz  a2200109o  45 0",
+      "marc:controlfield": [
+        {
+          "@tag": "001",
+          "$text": "230"
+        },
+        {
+          "@tag": "003",
+          "$text": "NL-AMISG"
+        },
+        {
+          "@tag": "005",
+          "$text": "20060508113150.0"
+        },
+        {
+          "@tag": "008",
+          "$text": "130909n| acnaaabn |n anc d|||||||||||||d"
+        }
+      ],
+      "marc:datafield": [
+        {
+          "@ind1": " ",
+          "@ind2": " ",
+          "@tag": "035",
+          "marc:subfield": {
+            "@code": "a",
+            "$text": "(IISG)IISGa10004191"
+          }
+        },
+        {
+          "@ind1": " ",
+          "@tag": "040",
+          "@ind2": " ",
+          "marc:subfield": [
+            {
+              "@code": "a",
+              "$text": "IISG"
+            },
+            {
+              "@code": "c",
+              "$text": "IISG"
+            }
+          ]
+        },
+        {
+          "@tag": "110",
+          "@ind2": " ",
+          "@ind1": "2",
+          "marc:subfield": {
+            "@code": "a",
+            "$text": "3HO Foundation (Amsterdam)"
+          }
+        },
+        {
+          "@ind1": "2",
+          "@tag": "410",
+          "@ind2": " ",
+          "marc:subfield": {
+            "@code": "a",
+            "$text": "Stichting 3HO (Amsterdam)"
+          }
+        },
+        {
+          "@ind1": " ",
+          "@tag": "901",
+          "@ind2": " ",
+          "marc:subfield": [
+            {
+              "@code": "c",
+              "$text": "230"
+            },
+            {
+              "@code": "t",
+              "$text": "authority"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
