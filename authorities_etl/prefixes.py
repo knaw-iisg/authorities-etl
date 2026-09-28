@@ -26,7 +26,7 @@ TITLE = Namespace(AUTHORITY + "title/")
 
 DATASET = Namespace(ID + "dataset/")
 
-SDO = Namespace("http://schema.org/")
+SDO = Namespace("https://schema.org/")
 VIAF = Namespace("http://viaf.org/viaf/")
 LOC_AUTHORITIES = Namespace("http://id.loc.gov/authorities/subjects/")
 

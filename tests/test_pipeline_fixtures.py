@@ -12,7 +12,7 @@ from authorities_etl.fixtures import load_fixture
 from authorities_etl.pipeline import process_record
 
 FIXTURES_DIR = Path(__file__).resolve().parent.parent / "static" / "authority" / "sourceData"
-SDO = Namespace("http://schema.org/")
+SDO = Namespace("https://schema.org/")
 
 
 def _fixture_paths():

@@ -8,7 +8,7 @@ from rdflib.namespace import Namespace
 
 from authorities_etl.pipeline import process_record
 
-SDO = Namespace("http://schema.org/")
+SDO = Namespace("https://schema.org/")
 
 
 def _record(control_number: str, datafields: list[dict], datestamp: str = "2020-01-01T00:00:00Z") -> dict:
