@@ -17,6 +17,15 @@ this pipeline mints IRIs under those *exact same* namespaces from the
 authority records those ids actually refer to. Merge the graphs and those
 previously-bare IRIs get real names, alternate names, and VIAF/LoC links.
 
+## Public instance
+
+This pipeline's output is merged with six others into a single public
+knowledge graph, browsable at **https://kb.zijdeman.nl** and queryable
+directly at **https://sparql.zijdeman.nl** (or via QLever's own query UI
+at **https://kg.zijdeman.nl**) -- see
+[iisg-kb-viewer](https://github.com/knaw-iisg/iisg-kb-viewer) and
+[triplestore](https://github.com/knaw-iisg/triplestore).
+
 ## Field mapping
 
 | MARC tag(s) | RDF |
